@@ -5,14 +5,12 @@ public abstract class Property {
 	protected String Region;
 	protected String District;
 	protected String Street;
-	protected int Area;
-	protected boolean rented ;
-	protected int NumLease;
-	Lease lease [] ;
-	protected int PricOf1meter ;
+	protected double Area;
+	protected boolean rented;
+	protected double PricOf1meter;
 
 	
-	public Property(String propertyNum, String city, String region, String district, String street, int area, boolean rented ) {
+	public Property(String propertyNum, String city, String region, String district, String street, double area ) {
 	
 		this.propertyNum = propertyNum;
 		City = city;
@@ -20,9 +18,8 @@ public abstract class Property {
 		District = district;
 		Street = street;
 		Area = 0;
-		NumLease = 0 ;
-		Lease lease [] = new Lease[1];
-		PricOf1meter =0 ;
+		rented = false;
+		PricOf1meter = 0;
 	}
 	
 	public abstract double CalculatePrice() ;
