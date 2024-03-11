@@ -25,6 +25,7 @@ public abstract class Property {
 		
 	}
 	public Property(Property p) {
+		
 		 propertyNum =p.propertyNum;
 	     City=p.City;
 		 Region=p.Region;
@@ -101,13 +102,7 @@ public abstract class Property {
 		Area = area;
 	}
 
-	public Lease[] getLease() {
-		return lease;
-	}
-
-	public void setLease(Lease[] lease) {
-		this.lease = lease;
-	}
+	
 
 	
 }
