@@ -34,6 +34,15 @@ public abstract class Property {
 	public boolean rented () {
 		return rented ;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Property [propertyNum=" + propertyNum + ", City=" + City + ", Region=" + Region + ", District="
+				+ District + ", Street=" + Street + ", Area=" + Area + ", rented=" + rented + ", NumLease=" + NumLease
+				+ ", PricOf1meter=" + PricOf1meter + "]";
+	}
 
 	public String getPropertyNum() {
 		return propertyNum;
