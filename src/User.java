@@ -99,13 +99,11 @@ public boolean  removeproperty ( String propertyId) {
 		
 	}
 	
-	public Property findProperty(propertynum: String) {
+	public Property findProperty( String propertynum) {
 		for(int i = 0 ; i < numOfproperty ; i++)
 			if(properties[i].propertyNum.euqals(propertynum) )
 			
 			return properties[i]; 
-		
-		
 		
 			return null ; 
 			}
