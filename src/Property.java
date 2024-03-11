@@ -8,9 +8,8 @@ public abstract class Property {
 	protected String Street;
 	protected int Area;
 	protected boolean rented ;
-	protected int NumLease;
-	Lease lease [] ;
 	protected int PricOf1meter ;
+	protected static int Id = 0 ;
 
 	
 	public Property(String propertyNum, String city, String region, String district, String street, int area, boolean rented ) {
@@ -21,10 +20,20 @@ public abstract class Property {
 		District = district;
 		Street = street;
 		Area = 0;
-		NumLease = 0 ;
-		Lease lease [] = new Lease[1];
 		PricOf1meter =0 ;
+		Id++;
 		
+	}
+	public Property(Property p) {
+		 propertyNum =p.propertyNum;
+	     City=p.City;
+		 Region=p.Region;
+		 District=p.District;
+	     Street=p.Street;
+		 Area=p.Area;
+		 rented =p.rented;
+	     PricOf1meter=p.PricOf1meter;
+         Id =p.Id;
 	}
 	
 	public abstract double CalculatePrice() ;
@@ -40,8 +49,8 @@ public abstract class Property {
 	@Override
 	public String toString() {
 		return "Property [propertyNum=" + propertyNum + ", City=" + City + ", Region=" + Region + ", District="
-				+ District + ", Street=" + Street + ", Area=" + Area + ", rented=" + rented + ", NumLease=" + NumLease
-				+ ", PricOf1meter=" + PricOf1meter + "]";
+				+ District + ", Street=" + Street + ", Area=" + Area + ", rented=" + rented 
+				+ ", PricOf1meter=" + PricOf1meter + "Id" + Id + "]";
 	}
 
 	public String getPropertyNum() {
