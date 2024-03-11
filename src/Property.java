@@ -1,3 +1,4 @@
+import org.w3c.dom.ls.LSOutput;
 
 public abstract class Property {
 	protected String propertyNum;
@@ -23,6 +24,7 @@ public abstract class Property {
 		NumLease = 0 ;
 		Lease lease [] = new Lease[1];
 		PricOf1meter =0 ;
+		
 	}
 	
 	public abstract double CalculatePrice() ;
