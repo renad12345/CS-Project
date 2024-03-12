@@ -1,45 +1,51 @@
 
 public abstract class Property {
-	protected String propertyNum;
-	protected String City;
-	protected String Region;
-	protected String District;
-	protected String Street;
-	protected double Area;
+	protected String tanentName;
+	protected int propertyID;
+	protected String city;
+	protected String region;
+	protected String district;
+	protected String street;
+	protected double area;
 	protected boolean rented;
-	protected double PricOf1meter;
+	protected double pricOf1meter;
+	
+	protected static int ID = 0;
 
 	
-	public Property(String propertyNum, String city, String region, String district, String street, double area ) {
-	
-		this.propertyNum = propertyNum;
-		City = city;
-		Region = region;
-		District = district;
-		Street = street;
-		Area = 0;
+	public Property(String tanentName, String city, String region, String district, String street, double area) {
+	this.tanentName = tanentName;
+		this.propertyID = ID++;
+		this.city = city;
+		this.region = region;
+		this.district = district;
+		this.street = street;
+		area = 0;
 		rented = false;
-		PricOf1meter = 0;
+		pricOf1meter = 0;	
 	}
 	
-	public abstract double CalculatePrice() ;
+	
+	public abstract double calculateDailyRent();
 	
 	
-	
-	public boolean rented () {
-		return rented ;
+	@Override
+	public String toString() { //#
+		return "Property [propertyNum=" + propertyID + ", City=" + city + ", Region=" + region + ", District="
+				+ district + ", Street=" + street + ", Area=" + area + ", rented=" + rented 
+				+ ", PricOf1meter=" + pricOf1meter;
 	}
 
-	public String getPropertyNum() {
-		return propertyNum;
+	public int getPropertyID() {
+		return propertyID;
 	}
 
-	public void setPropertyNum(String propertyNum) {
-		this.propertyNum = propertyNum;
+	public void setPropertyID(int propertyID) {
+		this.propertyID = propertyID;
 	}
 
 	public String getCity() {
-		return City;
+		return city;
 	}
 
 	public void setCity(String city) {
@@ -70,7 +76,7 @@ public abstract class Property {
 		Street = street;
 	}
 
-	public int getArea() {
+	public double getArea() {
 		return Area;
 	}
 
@@ -78,12 +84,8 @@ public abstract class Property {
 		Area = area;
 	}
 
-	public Lease[] getLease() {
-		return lease;
-	}
-
-	public void setLease(Lease[] lease) {
-		this.lease = lease;
+	public void setRented(boolean rented) {
+		this.rented = rented;
 	}
 
 	

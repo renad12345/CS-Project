@@ -1,19 +1,19 @@
 
 import java.time.temporal.ChronoUnit;
-public static ID = 0;
 public class Lease {
-	private String leaseID;
+	public static int ID = 0;
+	private int leaseID;
 	private Date startDate;
 	private Date endDate;
 	private Property property;
 	private String tenentName;
-	private String tenentID:
+	private String tenentID;
 	private double totalRent;
 	
 	
 	
 //Constructor
-	public Lease(Date startDate, Date endDate, Propertyp property, String tenentName, String tenentID) {
+	public Lease(Date startDate, Date endDate, Property property, String tenentName, String tenentID) {
 		leaseID = ID++;
 
 		this.startDate = startDate;
@@ -24,12 +24,12 @@ public class Lease {
 		this.tenentName = tenentName;
 		this.tenentID = tenentID;
 		
-		
+		calculateTotalRent(property.calculateDailyRent());
 		
 	}
 	//copy Constructor
 	public Lease (Lease lease) {
-		leaseNo = lease.leaseNo;
+		leaseID = lease.leaseID;
 		property = lease.property;
 		tenentName = lease.tenentName;
 		tenentID = lease.tenentID;
@@ -37,11 +37,10 @@ public class Lease {
 		endDate = lease.endDate;
 		totalRent = lease.totalRent;
 		
-	}
-		
-		calculateTotalRent(property.getPrice()){
+		//#
+		calculateTotalRent(property.calculateDailyRent());
 		property.setRented(true);
-		System.out.println("Lease was created succsefully with Lease ID: " + leaseNo);
+		System.out.println("Lease was created succsefully with Lease ID: " + leaseID);
 		
 	}
 	
@@ -51,7 +50,7 @@ public class Lease {
 	
 	public void calculateTotalRent(double dailyRent) {
 		long daysBetween =ChronoUnit.DAYS.between(startDate, endDate);
-	 calculateRentAmount = dailyRent*daysBetween;
+		totalRent = dailyRent*daysBetween;
 		
 		
 	}
@@ -59,11 +58,14 @@ public class Lease {
 
 	@Override
 	public String toString() {
-		return "leaseNo: " + leaseNo + "Property Information:" + property.toString() 
+		return "leaseNo: " + leaseID + "Property Information:" + property.toString() 
 		+ "\ntenent Name: " + tenentName + "\ntenent ID: "+ tenentID +  "\nstartDate: "
 				+ startDate + "\nendDate: " + endDate + 
 				"\ntotalRentAmount: " + totalRent;
 	}
 	
+	public int getLeaseID() {
+		return leaseID;
+	}
 	
 }

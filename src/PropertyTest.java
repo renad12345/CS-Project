@@ -8,8 +8,8 @@ public class PropertyTest {
 
 	public static void main(String[] args) {
 		
-		users[numOfusers++] = new User(112233, "Sara", "055555");
-		Property property = new Apartment("Riyadh", "Alhamra", "Almasane" , 200);
+		users[numOfusers++] = new User("112233", "Sara", "055555", 3, 2);
+		Property property = new Apartment(users[numOfusers].getName(), "Riyadh", "Riyadh", "Alhamra", "Almasane" , 200, 4);
 		users[numOfusers].addProperty(property);
 		
 		
@@ -35,7 +35,7 @@ int rentedPropertyNum = input.nextInt();
 users[numOfusers++] = new User(ID, name, phoneNumber, propertyNum, rentedPropertyNum);
 
 
-
+int choice; 
 do {
 	System.out.println("How can I help you? Enter one of the following options");
 	System.out.println("1- Rent a property");
@@ -47,7 +47,7 @@ do {
 	System.out.println("7- Show my information");
 	System.out.println("8- Exit");
 	System.out.print("option: ");
-	int choice = input.nextInt();
+	choice = input.nextInt();
 
 	switch (choice){
 	case 1: 
@@ -89,8 +89,8 @@ do {
 	case 3:
 		System.out.println("******************* 3- Search for a rented property *******************");
 		System.out.println("Enter property's lease ID which you want to search about");
-		int LeaseID = input.nextInt();
-		if(users[numOfusers].searchLease(LeaseID))
+		int LeaseId = input.nextInt();
+		if(users[numOfusers].searchLease(LeaseID)) //#
 			System.out.println("Lease was found!");
 		else 
 			System.out.println("Sorry, Lease was not found!");
@@ -99,7 +99,19 @@ do {
 	case 4:
 		System.out.println("******************* 4- list a property for renting *******************");
 		System.out.println("Complete following information");
-
+		System.out.println("Do you want to list a shop or an apartment for renting?");
+		System.out.println("Enter 'S' for a shop and 'A' for an apartment");
+		char propertyKind = input.next().charAt(0);
+		
+		if(propertyKind=='S') {
+			Property property1 = new Shop(users[numOfusers].getName(), city, region, district, street, area);
+			users[numOfusers].addProperty(property1);}
+		
+		else if(propertyKind=='A') {
+			Property property1 = new Apartment(users[numOfusers].getName()city, region, district, street, area);
+			users[numOfusers].addProperty(property1);}
+		
+		else System.out.println("Invalid input");
 		System.out.print("City: ");
 		String city = input.next();
 		
@@ -113,27 +125,15 @@ do {
 		String street = input.next();
 		
 		System.out.print("Area: ");
-		String area = input.next();
+		double area = input.nextDouble();
 		
-		System.out.println("Do you want to list a shop or an apartment for renting?");
-		System.out.println("Enter 'S' for a shop and 'A' for an apartment");
-		char propertyKind = input.next().charAt(0);
-		
-		if(propertyKind=='S') {
-			Property property1 = new Shop(city, region, district, street, area);
-			users[numOfusers].addProperty(property1);}
-		
-		else if(propertyKind=='A') {
-			Property property1 = new Apartment(city, region, district, street, area);
-			users[numOfusers].addProperty(property1);}
-		
-		else System.out.println("Invalid input");
+	
 		break;
 		
 	case 5:
 		System.out.println("******************* 5- Remove your own property *******************");
 		System.out.println("Enter property id");
-		int propertyID=input.nextInt();
+		int propertyId=input.nextInt();
 		if(users[numOfusers].removeProperty(propertyID))
 			System.out.println("property was deleted succsfully!");
 		else 
@@ -141,9 +141,9 @@ do {
 		break;
 		
 	case 6:
-		System.out.println("******************* 6- Search for your own property *******************")
+		System.out.println("******************* 6- Search for your own property *******************");
 		System.out.println("Enter property's id number which you want to search about");
-		int propertyID = input.nextInt();
+		int propertyID2 = input.nextInt();
 		if(users[numOfusers].findProperty(propertyID) != null)
 			System.out.println("property is found!");
 		else 
@@ -157,11 +157,13 @@ do {
 			
 		case 8:
 			System.out.println("******************* 8- Exit *******************");
-			System.out,println("See you later!")
-			System.exit(0);
+			System.out.println("See you later!");
+			break;
 	}
+	} 
+while ( choice!=7 );
 }
-while (choice!=7)
+	
 	
 	
 	public static Property wantedProperty(int propertyId) {
