@@ -1,27 +1,38 @@
 
 public class Shop extends Property{
-	protected int PricOf1meter = 800;
 
-	
-	public Shop(String propertyNum, String city, String region, String district, String street, int area , boolean rented) {
-		super(propertyNum, city, region, district, street, area, rented);
+	public Shop(String tanentName, int propertyID, String city, String region, String district, String street,
+			double area, boolean rented) {
+		super(tanentName,propertyID , city, region, district, street, area , rented);
+		pricOf1meter = 800;
 	}
+	//copyConstructor
 	
+//<<<<<<< HEAD
 	public Shop(Shop s) {
-		super(s.propertyNum, s.City, s.Region, s.District, s.Street, s.PricOf1meter, s.rented);
-        PricOf1meter = 800;
+		super(s.tanentName,s.propertyID , s.city, s.region, s.district, s.street, s.area , s.rented);
+		pricOf1meter = 800;
 	}
 	
 	public double CalculatePrice() {
-		return (PricOf1meter * Area );
+		return (pricOf1meter * area );
+//=======
+	}
+	public double calculateDailyRent() {
+		return (pricOf1meter * area );
+		
+		
+//>>>>>>> branch 'main' of https://github.com/renad12345/CS-Project
 	}
 
-	public int getPricOf1meter() {
-		return PricOf1meter;
+	//toString
+	
+	public double getPricOf1meter() {
+		return pricOf1meter;
 	}
 
 	public void setPricOf1meter(int pricOf1meter) {
-		PricOf1meter = pricOf1meter;
+		pricOf1meter = pricOf1meter;
 	}
 	
 

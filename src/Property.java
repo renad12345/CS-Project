@@ -1,97 +1,93 @@
-import org.w3c.dom.ls.LSOutput;
 
 public abstract class Property {
-	protected String propertyNum;
-	protected String City;
-	protected String Region;
-	protected String District;
-	protected String Street;
-	protected int Area;
-	protected boolean rented ;
-	protected int PricOf1meter ;
-	protected static int Id = 0 ;
+	protected String tanentName;
+	protected int propertyID;
+	protected String city;
+	protected String region;
+	protected String district;
+	protected String street;
+	protected double area;
+	protected boolean rented;
+	protected double pricOf1meter;
+	
+	protected static int ID = 0;
 
 	
-	public Property(String propertyNum, String city, String region, String district, String street, int area, boolean rented ) {
-	
-		this.propertyNum = propertyNum;
-		City = city;
-		Region = region;
-		District = district;
-		Street = street;
-		Area = 0;
-		PricOf1meter =0 ;
-		Id++;
+//<<<<<<< HEAD
+
+	public Property(String tanentName, int propertyID, String city, String region, String district, String street,
+		double area, boolean rented) {
 		
-	}
+	this.tanentName = tanentName;
+	this.propertyID = propertyID;
+	this.city = city;
+	this.region = region;
+	this.district = district;
+	this.street = street;
+	this.area = area;
+	this.rented = rented;
+	ID++;
+}
 
-	
 	public abstract double CalculatePrice() ;
 	
-	
-	
+
 	public boolean rented () {
 		return rented ;
+//=======
+	
+//>>>>>>> branch 'main' of https://github.com/renad12345/CS-Project
 	}
 	
 	
-
+	public abstract double calculateDailyRent();
+	
+	
 	@Override
-	public String toString() {
-		return "Property [propertyNum=" + propertyNum + ", City=" + City + ", Region=" + Region + ", District="
-				+ District + ", Street=" + Street + ", Area=" + Area + ", rented=" + rented 
-				+ ", PricOf1meter=" + PricOf1meter + "Id" + Id + "]";
+	public String toString() { //#
+		return "Property [propertyNum=" + propertyID + ", City=" + city + ", Region=" + region + ", District="
+				+ district + ", Street=" + street + ", Area=" + area + ", rented=" + rented 
+				+ ", PricOf1meter=" + pricOf1meter;
 	}
 
-	public String getPropertyNum() {
-		return propertyNum;
+
+	public String getTanentName() {
+		return tanentName;
 	}
 
-	public void setPropertyNum(String propertyNum) {
-		this.propertyNum = propertyNum;
+
+	public int getPropertyID() {
+		return propertyID;
 	}
+
 
 	public String getCity() {
-		return City;
+		return city;
 	}
 
-	public void setCity(String city) {
-		City = city;
-	}
 
 	public String getRegion() {
-		return Region;
+		return region;
 	}
 
-	public void setRegion(String region) {
-		Region = region;
-	}
 
 	public String getDistrict() {
-		return District;
+		return district;
 	}
 
-	public void setDistrict(String district) {
-		District = district;
-	}
 
 	public String getStreet() {
-		return Street;
+		return street;
 	}
 
-	public void setStreet(String street) {
-		Street = street;
+
+	public double getArea() {
+		return area;
 	}
 
-	public int getArea() {
-		return Area;
+
+	public boolean isRented() {
+		return rented;
 	}
 
-	public void setArea(int area) {
-		Area = area;
-	}
-
-	
-
-	
 }
