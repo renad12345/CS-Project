@@ -108,6 +108,16 @@ public boolean  removeproperty ( String propertyId) {
 			return null ; 
 			}
 		
+	
+	public boolean availableproperties() {
+	
+		for(int i = 0 ; i < numOfproperty ; i++)
+		if (rented())	
+		return false;
+		
+		return true; 
+		
+	}
 
 
 	public int getId() {
