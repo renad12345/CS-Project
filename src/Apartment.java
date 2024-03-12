@@ -6,13 +6,22 @@ protected int PricOf1meter = 800;
 
 
 
-public Apartment(String city, String region, String district, String street, int area,
-		int numOfRooms) {
-	super(city, region, district, street, area);
+public Apartment(String tanentName, String city, String region, String district, String street, double area,
+		int numOfRooms, int pricOf1meter) {
+	super(tanentName, city, region, district, street, area);
 	NumOfRooms = numOfRooms;
+	PricOf1meter = pricOf1meter;
 }
 
+
 //copyConstructor
+public Apartment(Apartment Ap) {
+	super(Ap.tanentName, Ap.city, Ap.region,Ap.district,Ap.street, Ap.area);
+	NumOfRooms = Ap.NumOfRooms;
+	PricOf1meter = Ap.PricOf1meter;		
+	
+}
+
 
 
 public double calculateDailyRent() {

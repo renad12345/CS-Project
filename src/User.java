@@ -71,7 +71,7 @@ public class User {
 		properties[numOfProperty++]=new Shop ((Shop) p);
 		else 
 	if (p instanceof Apartment  )
-    properties[numOfproperty++]=new Apartment ((Apartment) p)	;	
+    properties[numOfProperty++]=new Apartment ((Apartment) p)	;	
 		
 		
 	
