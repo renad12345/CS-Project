@@ -24,18 +24,7 @@ public abstract class Property {
 		Id++;
 		
 	}
-	public Property(Property p) {
-		
-		 propertyNum =p.propertyNum;
-	     City=p.City;
-		 Region=p.Region;
-		 District=p.District;
-	     Street=p.Street;
-		 Area=p.Area;
-		 rented =p.rented;
-	     PricOf1meter=p.PricOf1meter;
-         Id =p.Id;
-	}
+
 	
 	public abstract double CalculatePrice() ;
 	

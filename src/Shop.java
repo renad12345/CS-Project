@@ -7,10 +7,13 @@ public class Shop extends Property{
 		super(propertyNum, city, region, district, street, area, rented);
 	}
 	
+	public Shop(Shop s) {
+		super(s.propertyNum, s.City, s.Region, s.District, s.Street, s.PricOf1meter, s.rented);
+        PricOf1meter = 800;
+	}
+	
 	public double CalculatePrice() {
 		return (PricOf1meter * Area );
-		
-		
 	}
 
 	public int getPricOf1meter() {
