@@ -1,5 +1,5 @@
 
-public class Apartment extends Property{
+public  class Apartment extends Property{
 private int  NumOfRooms ;
 //#
 protected int PricOf1meter = 800;
@@ -27,7 +27,7 @@ public Apartment(Apartment Ap) {
 
 
 
-public double calculateDailyRent() {
+public  double calculateDailyRent() {
 if (NumOfRooms<2)
 return (PricOf1meter * area)+(NumOfRooms*1000);
 else
@@ -58,6 +58,21 @@ public void setNumOfRooms(int numOfRooms) {
 
 public void setPricOf1meter(int pricOf1meter) {
 	PricOf1meter = pricOf1meter;
+}
+
+
+
+
+
+@Override
+public double CalculatePrice() {
+	if (NumOfRooms<2)
+		return (PricOf1meter * area)+(NumOfRooms*1000);
+		else
+			return (PricOf1meter * area)	;
+		
+
+	
 }
 
 }

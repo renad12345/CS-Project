@@ -113,12 +113,16 @@ public boolean  removeProperty ( int propertyId) {
 	public boolean availableProperties() {
 	
 		for(int i = 0 ; i < numOfProperty ; i++)
-		if (rented())	
+		if (Property.rented())	
+			
 		return false;
 		
 		return true; 
 		
 	}
+
+
+	
 
 
 	public String getID() {
@@ -134,6 +138,7 @@ public boolean  removeProperty ( int propertyId) {
 	public String getPhone() {
 		return phone;
 	}
+	
 
 
 	public int getNumOfLease() {

@@ -7,7 +7,7 @@ public abstract class Property {
 	protected String district;
 	protected String street;
 	protected double area;
-	protected boolean rented;
+	protected static boolean rented;
 	protected double pricOf1meter;
 	
 	protected static int ID = 0;
@@ -32,7 +32,7 @@ public abstract class Property {
 	public abstract double CalculatePrice() ;
 	
 
-	public boolean rented () {
+	public static boolean rented () {
 		return rented ;
 //=======
 	
