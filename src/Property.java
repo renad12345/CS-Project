@@ -11,12 +11,10 @@ public abstract class Property {
 	protected double pricOf1meter;
 	
 	protected static int ID = 0;
-
 	
 //<<<<<<< HEAD
-
 	public Property(String tanentName, int propertyID, String city, String region, String district, String street,
-		double area, boolean rented) {
+		double area) {
 		
 	this.tanentName = tanentName;
 	this.propertyID = propertyID;
@@ -25,23 +23,16 @@ public abstract class Property {
 	this.district = district;
 	this.street = street;
 	this.area = area;
-	this.rented = rented;
+	this.rented = false;
 	ID++;
 }
-
-	public abstract double CalculatePrice() ;
+	public abstract double calculateDailyRent();
 	
-
 	public boolean rented () {
 		return rented ;
 //=======
-	
 //>>>>>>> branch 'main' of https://github.com/renad12345/CS-Project
 	}
-	
-	
-	public abstract double calculateDailyRent();
-	
 	
 	@Override
 	public String toString() { //#
@@ -49,45 +40,4 @@ public abstract class Property {
 				+ district + ", Street=" + street + ", Area=" + area + ", rented=" + rented 
 				+ ", PricOf1meter=" + pricOf1meter;
 	}
-
-
-	public String getTanentName() {
-		return tanentName;
-	}
-
-
-	public int getPropertyID() {
-		return propertyID;
-	}
-
-
-	public String getCity() {
-		return city;
-	}
-
-
-	public String getRegion() {
-		return region;
-	}
-
-
-	public String getDistrict() {
-		return district;
-	}
-
-
-	public String getStreet() {
-		return street;
-	}
-
-
-	public double getArea() {
-		return area;
-	}
-
-
-	public boolean isRented() {
-		return rented;
-	}
-
 }
