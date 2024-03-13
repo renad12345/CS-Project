@@ -31,8 +31,8 @@ public class User {
 		return false;	
 		
 	}
-	//
-	public Lease SearchLease(int LeaseID) {
+	
+	public Lease searchLease(int LeaseID) {
 		for(int i = 0 ;i < numOfLease ; i++)
 		if(leases[i].getLeaseID()== LeaseID )
 		return leases[i]; 
@@ -63,7 +63,7 @@ public class User {
 	
 	
 	
-	// 
+	
 	public boolean addProperty(  Property p ) {
 	if (properties.length < numOfProperty )
 	{

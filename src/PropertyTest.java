@@ -90,7 +90,7 @@ do {
 		System.out.println("******************* 3- Search for a rented property *******************");
 		System.out.println("Enter property's lease ID which you want to search about");
 		int LeaseId = input.nextInt();
-		if(users[numOfusers].searchLease(LeaseID)) //#
+		if(users[numOfusers].searchLease(LeaseID) != null) //#
 			System.out.println("Lease was found!");
 		else 
 			System.out.println("Sorry, Lease was not found!");
@@ -99,17 +99,7 @@ do {
 	case 4:
 		System.out.println("******************* 4- list a property for renting *******************");
 		System.out.println("Complete following information");
-		System.out.println("Do you want to list a shop or an apartment for renting?");
-		System.out.println("Enter 'S' for a shop and 'A' for an apartment");
-		char propertyKind = input.next().charAt(0);
-		
-		if(propertyKind=='S') {
-			Property property1 = new Shop(users[numOfusers].getName(), city, region, district, street, area);
-			users[numOfusers].addProperty(property1);}
-		
-		else if(propertyKind=='A') {
-			Property property1 = new Apartment(users[numOfusers].getName()city, region, district, street, area);
-			users[numOfusers].addProperty(property1);}
+	
 		
 		else System.out.println("Invalid input");
 		System.out.print("City: ");
@@ -127,6 +117,17 @@ do {
 		System.out.print("Area: ");
 		double area = input.nextDouble();
 		
+		System.out.println("Do you want to list a shop or an apartment for renting?");
+		System.out.println("Enter 'S' for a shop and 'A' for an apartment");
+		char propertyKind = input.next().charAt(0);
+		
+		if(propertyKind=='S') {
+			Property property1 = new Shop(users[numOfusers].getName(), city, region, district, street, area);
+			users[numOfusers].addProperty(property1);}
+		
+		else if(propertyKind=='A') {
+			Property property1 = new Apartment(users[numOfusers].getName()city, region, district, street, area);
+			users[numOfusers].addProperty(property1);}
 	
 		break;
 		

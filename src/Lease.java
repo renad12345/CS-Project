@@ -1,5 +1,7 @@
 
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 public class Lease {
 	public static int ID = 0;
 	private int leaseID;
