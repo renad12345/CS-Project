@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 public class User {
 	private String ID ;
@@ -22,7 +21,7 @@ public class User {
 	}
 	
 	
-	public boolean addLease (Lease L) {
+	public boolean addLease(Lease L) {
 		if (numOfLease<leases.length)
 		{
 			leases[numOfLease++]=new Lease(L);
@@ -48,13 +47,14 @@ public class User {
 		
 		for(int i = 0 ;i < numOfLease ; i++)
 			if(leases[i].getLeaseID() == LeaseID) {
-				
+				(leases[i].getProperty()).setRented(false);
 				for(int j = i ; j < numOfLease -1 ; j++) 
 					leases[j] = leases[j+1] ;
 				numOfLease-- ;
-				leases[numOfLease ]= null;	
+				leases[numOfLease]= null;	
 				
 				return true;
+				
 			}
 		return false;	
 		
@@ -62,16 +62,14 @@ public class User {
 	
 	
 	
-	
-	
 	public boolean addProperty(  Property p ) {
-	if (properties.length < numOfProperty )
+	if (numOfProperty <  properties.length )
 	{
 	if (p instanceof Shop  )
-		properties[numOfProperty++]=new Shop ((Shop) p);
+		properties[numOfProperty++] = new Shop ((Shop) p);
 		else 
 	if (p instanceof Apartment  )
-    properties[numOfproperty++]=new Apartment ((Apartment) p)	;	
+    properties[numOfProperty++] = new Apartment ((Apartment) p)	;	
 		
 		
 	
@@ -87,7 +85,7 @@ public class User {
 public boolean  removeProperty ( int propertyId) {
 		
 		for(int i = 0 ;i < numOfProperty ; i++)
-			if(properties[i].getPropertyID()==propertyId) {
+			if(properties[i].getPropertyID()==propertyId && properties[i].isRented()==false) {
 				
 				for(int j = i ; j < numOfProperty -1 ; j++) 
 					properties[j] = properties[j+1] ;
@@ -110,55 +108,53 @@ public boolean  removeProperty ( int propertyId) {
 			}
 		
 	
-	public boolean availableProperties() {
+	public void availableProperties() {
 	
 		for(int i = 0 ; i < numOfProperty ; i++)
-		if (rented())	
-		return false;
-		
-		return true; 
-		
+		if (!(properties[i].isRented())) {
+			System.out.println("Owener name: " + properties[i].getOwnerName() + "\n" + properties[i] );	
+			System.out.println("\n");}
+	}
+	
+	
+	public int availablePropertiesNum() {
+		int availablePropertyNum = 0;
+		for (int i = 0; i<numOfProperty; i++)
+			if (!(properties[i].isRented()))
+				availablePropertyNum++;
+		return availablePropertyNum;
+
 	}
 
-
-	public String getID() {
-		return ID;
+	@Override
+	public String toString() { 
+		String propertiesInfo = "\n Properties Information: \n";
+		for (int i = 0; i<numOfProperty; i++)
+			propertiesInfo += properties[i].toString() + "\n";
+		
+		String leasesInfo = "\nLeases Information: \n";
+		for (int i = 0; i<numOfLease; i++)
+			propertiesInfo += leases[i].toString() + "\n";
+		
+			
+		return "User ID: " + ID + "\nname: " + name + "\nphone: " + phone +
+				"\nnumber Of leases: " + numOfLease
+				+leasesInfo + "\nnumber of properties: " + numOfProperty + propertiesInfo;
 	}
+	
 
 
 	public String getName() {
 		return name;
 	}
-
-
-	public String getPhone() {
-		return phone;
+	
+	public String getID() {
+		return ID;
 	}
-
-
-	public int getNumOfLease() {
-		return numOfLease;
-	}
-
-
-	public int getNumOfproperty() {
+	
+	public int getNumOfProperty() {
 		return numOfProperty;
 	}
-
-
-	@Override
-	public String toString() { //#
-		return "User [id=" + ID + ", name=" + name + ", phone=" + phone + ", numOfLease=" + numOfLease
-				+ ", numOfproperty=" + numOfProperty + ", leases=" + Arrays.toString(leases) + ", properties="
-				+ Arrays.toString(properties) + "]";
-	}
-
-
-	
-	
-	
-	
-	
 	
 	
 	

@@ -1,73 +1,64 @@
 
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 public class Lease {
-	public static int ID = 0;
+	private static int ID = 1;
 	private int leaseID;
-	private Date startDate;
-	private Date endDate;
+	private String tanantName;
+	private String tanentID;
 	private Property property;
-	private String tenentName;
-	private String tenentID;
+	private int duration;
 	private double totalRent;
 	
 	
-	
-//Constructor
-	public Lease(Date startDate, Date endDate, Property property, String tenentName, String tenentID) {
-		leaseID = ID++;
 
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.property = property;
-
+	public Lease(String tanentName, String tanentID, int duration, Property pro) {
+		leaseID = ID++;	
+		property = pro;
 		
-		this.tenentName = tenentName;
-		this.tenentID = tenentID;
+		this.tanantName = tanentName;
+		this.tanentID = tanentID;
 		
-		calculateTotalRent(property.calculateDailyRent());
+		this.duration = duration;
 		
-	}
-	//copy Constructor
-	public Lease (Lease lease) {
-		leaseID = lease.leaseID;
-		property = lease.property;
-		tenentName = lease.tenentName;
-		tenentID = lease.tenentID;
-		startDate = lease.startDate;
-		endDate = lease.endDate;
-		totalRent = lease.totalRent;
 		
-		//#
-		calculateTotalRent(property.calculateDailyRent());
+		//call calculateTotalRent method to set totalRent
+		calculateTotalRent(pro.calculateDailyRent());
+		//change renting status for the property that the lease relates to
 		property.setRented(true);
 		System.out.println("Lease was created succsefully with Lease ID: " + leaseID);
 		
 	}
 	
-	
-	
+	public Lease(Lease L) {
+		leaseID = L.leaseID;
+		
+		tanantName = L.tanantName;
+		tanentID = L.tanentID;
+		
+		duration = L.duration;
+		property = L.property;
+		
+	    totalRent = L.totalRent;
+		 
+	}
 
 	
 	public void calculateTotalRent(double dailyRent) {
-		long daysBetween =ChronoUnit.DAYS.between(startDate, endDate);
-		totalRent = dailyRent*daysBetween;
-		
-		
+	 totalRent = property.dailyRent * duration;
 	}
 	
 
 	@Override
 	public String toString() {
-		return "leaseNo: " + leaseID + "Property Information:" + property.toString() 
-		+ "\ntenent Name: " + tenentName + "\ntenent ID: "+ tenentID +  "\nstartDate: "
-				+ startDate + "\nendDate: " + endDate + 
-				"\ntotalRentAmount: " + totalRent;
+		return "leaseNo: " + leaseID + "\nProperty information: " + 
+	property.toString() /* <-- polymorphism */ + "\ntenant Name: " + tanantName+ "\ntanent ID: "  + tanentID + "\nstartDate: "
+				+ "Duration: " +duration + totalRent;
 	}
 	
 	public int getLeaseID() {
 		return leaseID;
 	}
 	
-}
+	public Property getProperty() {
+		return property;
+	}
+}//End class
