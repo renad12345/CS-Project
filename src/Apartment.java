@@ -21,7 +21,6 @@ private int  NumOfRooms ;
 
 //copyConstructor
 	public Apartment(Apartment Ap) {
-//?
 	super(Ap.ownerName, Ap.ownerID, Ap.city, Ap.region, Ap.district, Ap.street, Ap.area);
 	pricOf1meter = Ap.pricOf1meter;
 	NumOfRooms = Ap.NumOfRooms;	
