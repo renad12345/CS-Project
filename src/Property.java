@@ -46,6 +46,7 @@ public abstract class Property {
 	}
 
 
+	
 	public String getOwnerName() {
 		return ownerName;
 	}

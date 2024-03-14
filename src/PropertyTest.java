@@ -182,6 +182,7 @@ do {
 			System.out.println("See you later!");
 			break;
 	}//End switch
+	
 }//End while
 while (choice!=8);
 	}//End main

@@ -11,8 +11,8 @@ public class Shop extends Property{
 		System.out.println("Shop was added succsefully with property ID: " + propertyID);
 
 	}
-	//copyConstructor
 	
+	//copyConstructor
 	public Shop(Shop s) {
 		super(s.ownerName, s.ownerID, s.city, s.region, s.district, s.street, s.area);
 		pricOf1meter = 800;

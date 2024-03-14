@@ -9,7 +9,6 @@ public class Lease {
 	private double totalRent;
 	
 	
-
 	public Lease(String tanentName, String tanentID, int duration, Property pro) {
 		leaseID = ID++;	
 		property = pro;

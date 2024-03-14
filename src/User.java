@@ -143,7 +143,6 @@ public boolean  removeProperty ( int propertyId) {
 	}
 	
 
-
 	public String getName() {
 		return name;
 	}
