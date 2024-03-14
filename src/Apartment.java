@@ -20,10 +20,17 @@ private int  NumOfRooms ;
 
 //copyConstructor
 	public Apartment(Apartment Ap) {
-	super(Ap.ownerName, Ap.ownerID, Ap.city, Ap.region, Ap.district, Ap.street, Ap.area);
-	pricOf1meter = Ap.pricOf1meter;
-	NumOfRooms = Ap.NumOfRooms;	
-	dailyRent = Ap.dailyRent;
+		propertyID = Ap.propertyID;
+		ownerName = Ap.ownerName;
+		ownerID = Ap.ownerID;
+		city = Ap.city;
+		region = Ap.region;
+		district = Ap.district;
+		street = Ap.street;
+		area = Ap.area;
+		pricOf1meter = 800;
+		NumOfRooms = Ap.NumOfRooms;	
+		dailyRent = Ap.dailyRent;
 	}
 
 

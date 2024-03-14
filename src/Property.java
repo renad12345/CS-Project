@@ -33,16 +33,21 @@ public abstract class Property {
 	
 	
 	
+	public Property() {
+	}
+
+
+
 	public abstract double calculateDailyRent();
 	
 	
 	@Override
 	public String toString() { 
-		String isRented = rented? "status: Rented": "status: Not rented";
+		String isRented = rented? "Status: Rented": "status: Not rented";
 		
 		return "propertyID: "+ propertyID + "\nCity: " + city + "\nRegion: " +
-		region + "\nDistrict: " + district + "\nStreet: " + street + "\nArea: " + area +
-		"\nPrice Of one meter: " + pricOf1meter +  "\nDaily Rent: " + dailyRent + "\n" + isRented + "\n";
+		region + "\nDistrict: " + district + "\nStreet: " + street + "\nArea in meters: " + area +
+		"\nPrice Of one meter: " + pricOf1meter +  "\nDaily Rent (SR): " + dailyRent + "\n" + isRented + "\n";
 	}
 
 

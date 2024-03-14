@@ -14,7 +14,14 @@ public class Shop extends Property{
 	
 	//copyConstructor
 	public Shop(Shop s) {
-		super(s.ownerName, s.ownerID, s.city, s.region, s.district, s.street, s.area);
+		propertyID = s.propertyID;
+		ownerName = s.ownerName;
+		ownerID = s.ownerID;
+		city = s.city;
+		region = s.region;
+		district = s.district;
+		street = s.street;
+		area = s.area;
 		pricOf1meter = 800;
 		dailyRent = s.dailyRent;
 	}

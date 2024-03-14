@@ -10,7 +10,7 @@ public class PropertyTest {
 	public static void main(String[] args) {
 		
 		users = new User[100];
-		users[numOfusers++] = new User("112233", "Sara", "055555", 3, 2);
+		users[numOfusers++] = new User("112233", "Sara", "055555");
 		Property property = new Apartment(users[0].getName(), users[0].getID(), "Riyadh","Riyadh", "Alhamra", "Almasane" , 200, 5);
 		users[0].addProperty(property);
 		
@@ -30,13 +30,8 @@ String ID = input.next();
 System.out.print("Phone Number: ");
 String phoneNumber=input.next();
 
-System.out.print("Maximum number of properties you might list to renting: ");
-int propertyNum = input.nextInt();
 
-System.out.print("Maximum number of properties you might rent: ");
-int rentPropertyNum = input.nextInt();
-
-users[numOfusers++] = new User(ID, name, phoneNumber, propertyNum, rentPropertyNum);
+users[numOfusers++] = new User(ID, name, phoneNumber);
 
 int totalNumProperty;
 int choice;
@@ -44,11 +39,11 @@ do {
 	System.out.println("\n");
 	System.out.println("How can I help you? Enter one of the following options");
 	System.out.println("1- Rent a property");
-	System.out.println("2- Remove a rented property");
-	System.out.println("3- Search for a rented property");
-	System.out.println("4- list a property for renting");
-	System.out.println("5- Remove a property");
-	System.out.println("6- Search for a property");
+	System.out.println("2- Remove a lease");
+	System.out.println("3- Search for a lease");
+	System.out.println("4- add a property for rent");
+	System.out.println("5- Remove your own property");
+	System.out.println("6- Search for your own property");
 	System.out.println("7- Show my information");
 	System.out.println("8- Exit");
 	choice = input.nextInt();
@@ -76,21 +71,28 @@ do {
 		
 		System.out.println("Please, complete the following information");
 		System.out.print("property ID: ");
-		int propertyID = input.nextInt();
+		int propertyID1 = input.nextInt();
 		
-		System.out.print("Enter sutable duration for the lease: ");
+		System.out.print("Enter suitable duration for the lease: ");
 		int duration = input.nextInt();
-		if (wantedProperty(propertyID) != null && wantedProperty(propertyID).getOwnerID()!=users[1].getID()) { //tanent can't be owner for same property
+		
+		//if (wantedProperty(propertyID1) != null && wantedProperty(propertyID1).getOwnerID()!=null && !(wantedProperty(propertyID1).getOwnerID().equals(users[1].getID()))) { //tanent can't be owner for same property
+			if (wantedProperty(propertyID1) != null) {
+				System.out.println("good1");
+			if(wantedProperty(propertyID1).getOwnerID()!=null) {
+				System.out.println("good2");
+			if(!(wantedProperty(propertyID1).getOwnerID().equals(users[1].getID()))) {
+			System.out.println("good3");
 			
-			Lease lease1 = new Lease(users[1].getName(), users[1].getID(), duration, wantedProperty(propertyID));
-			users[1].addLease(lease1);}
+			Lease lease1 = new Lease(users[1].getName(), users[1].getID(), duration, wantedProperty(propertyID1));
+			users[1].addLease(lease1);}}}
 		else
-			System.out.println("Sorry, property was not founded!");}
+			System.out.println("Sorry, property was not rented sucsesfully!");}
 		break;
 	
 	case 2:
 		System.out.println("\n");
-		System.out.println("******************* 2- Remove a rented property *******************");
+		System.out.println("******************* 2- Remove a lease *******************");
 		System.out.println("Enter property's lease number which you want to cancel");
 		int LeaseNo = input.nextInt();
 		if(users[1].removeLease(LeaseNo)) {
@@ -102,7 +104,7 @@ do {
 		
 	case 3:
 		System.out.println("\n");
-		System.out.println("******************* 3- Search for a rented property *******************");
+		System.out.println("******************* 3- Search for a lease *******************");
 		System.out.println("Enter property's lease ID which you want to search about");
 		int LeaseID = input.nextInt();
 		if(users[1].searchLease(LeaseID) != null)
@@ -113,7 +115,7 @@ do {
 		
 	case 4:
 		System.out.println("\n");
-		System.out.println("******************* 4- list a property for renting *******************");
+		System.out.println("******************* 4- add a property for rent *******************");
 		System.out.println("Complete following information");
 
 		System.out.print("City: ");
@@ -128,10 +130,10 @@ do {
 		System.out.print("Street: ");
 		String Street = input.next();
 		
-		System.out.print("Area: ");
+		System.out.print("Area in meters: ");
 		Double Area = input.nextDouble();
 		
-		System.out.println("Do you want to list a shop or an apartment for renting?");
+		System.out.println("Do you want to add a shop or an apartment for rent?");
 		System.out.println("Enter 'S' for a shop and 'A' for an apartment");
 		char propertyKind = input.next().charAt(0);
 		
@@ -139,8 +141,8 @@ do {
 			Property property1 = new Shop(users[1].getName(), users[1].getID(), city, Region, District, Street, Area);
 			users[1].addProperty(property1);}
 		else if(propertyKind=='A') {
-	System.out.print("Enter number of rooms: ");
-	int numOfRooms = input.nextInt();
+			System.out.print("Enter number of rooms: ");
+			int numOfRooms = input.nextInt();
 			Property property1 = new Apartment(users[1].getName(), users[1].getID(),
 					city, Region, District, Street, Area, numOfRooms);
 			users[1].addProperty(property1);}
@@ -165,21 +167,23 @@ do {
 		System.out.println("Enter property's id number which you want to search about");
 		int propertyID3 = input.nextInt();
 		if(users[1].findProperty(propertyID3) != null)
-			System.out.println("property is found!");
+			System.out.println("property was found!");
 		else 
-			System.out.println("Sorry, property is not found!");
+			System.out.println("Sorry, property was not found!");
 		break;
 		
 		case 7:
 			System.out.println("\n");
 			System.out.println("******************* 7- Show my information *******************");
 			System.out.println(users[1].toString());
+
 			break;
 			
 		case 8:
 			System.out.println("\n");
 			System.out.println("******************* 8- Exit *******************");
 			System.out.println("See you later!");
+
 			break;
 	}//End switch
 	

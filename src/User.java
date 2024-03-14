@@ -8,13 +8,13 @@ public class User {
 	Lease leases [] ;
 	Property properties [] ;
 	
-	public User(String ID, String name, String phone, int leasesSize, int propertiesSize) {
+	public User(String ID, String name, String phone) {
 		this.ID = ID;
 		this.name = name;
 		this.phone = phone;
 
-		leases = new Lease [leasesSize];
-		properties = new Property [propertiesSize];		
+		leases = new Lease [100];
+		properties = new Property [100];		
 		
 		numOfLease = 0;
 		numOfProperty = 0;
@@ -128,18 +128,23 @@ public boolean  removeProperty ( int propertyId) {
 
 	@Override
 	public String toString() { 
-		String propertiesInfo = "\n Properties Information: \n";
-		for (int i = 0; i<numOfProperty; i++)
-			propertiesInfo += properties[i].toString() + "\n";
+		
 		
 		String leasesInfo = "\nLeases Information: \n";
 		for (int i = 0; i<numOfLease; i++)
-			propertiesInfo += leases[i].toString() + "\n";
+			leasesInfo += leases[i].toString() + "\n";
+		
+		
+		String propertiesInfo = "\nProperties Information: \n";
+		for (int i = 0; i<numOfProperty; i++)
+			propertiesInfo += properties[i].toString() + "\n";
+		
+		
 		
 			
-		return "User ID: " + ID + "\nname: " + name + "\nphone: " + phone +
-				"\nnumber Of leases: " + numOfLease
-				+leasesInfo + "\nnumber of properties: " + numOfProperty + propertiesInfo;
+		return "User ID: " + ID + "\nName: " + name + "\nPhone: " + phone +
+				"\nNumber Of leases: " + numOfLease
+				+ leasesInfo + "\nNumber of properties: " + numOfProperty  + propertiesInfo;
 	}
 	
 

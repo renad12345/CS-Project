@@ -47,10 +47,10 @@ public class Lease {
 	
 
 	@Override
-	public String toString() {
-		return "leaseNo: " + leaseID + "\nProperty information: " + 
-	property.toString() /* <-- polymorphism */ + "\ntenant Name: " + tanantName+ "\ntanent ID: "  + tanentID + "\nstartDate: "
-				+ "Duration: " +duration + totalRent;
+	public String toString() {//n
+		return ("\nLease ID: " + leaseID + "\nTenant name: " +
+	tanantName + "\nTanent ID: "  + tanentID + "\nDuration: " +
+				duration + "\nTotal rent: " + totalRent);
 	}
 	
 	public int getLeaseID() {
