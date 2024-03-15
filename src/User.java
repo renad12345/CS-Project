@@ -113,6 +113,7 @@ public boolean  removeProperty ( int propertyId) {
 	public boolean availableProperties() {
 	
 		for(int i = 0 ; i < numOfProperty ; i++)
+<<<<<<< HEAD
 		if (rented())	
 		return false;
 		
@@ -134,6 +135,34 @@ public boolean  removeProperty ( int propertyId) {
 	public String getPhone() {
 		return phone;
 	}
+=======
+		if (Property.rented())	
+			
+		return false;
+		
+		return true; 
+		
+	}
+
+
+	
+
+
+	public String getID() {
+		return ID;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public String getPhone() {
+		return phone;
+	}
+	
+>>>>>>> branch 'main' of https://github.com/renad12345/CS-Project
 
 
 	public int getNumOfLease() {

@@ -1,43 +1,66 @@
 
 public abstract class Property {
-	protected String tanentName;
+	protected static int ID = 1;
 	protected int propertyID;
+
+	protected String ownerName;
+	protected String ownerID;
 	protected String city;
 	protected String region;
 	protected String district;
 	protected String street;
 	protected double area;
+	protected double dailyRent;
 	protected boolean rented;
 	protected double pricOf1meter;
-	
-	protected static int ID = 0;
-	
-//<<<<<<< HEAD
-	public Property(String tanentName, int propertyID, String city, String region, String district, String street,
-		double area) {
-		
-	this.tanentName = tanentName;
-	this.propertyID = propertyID;
-	this.city = city;
-	this.region = region;
-	this.district = district;
-	this.street = street;
-	this.area = area;
-	this.rented = false;
-	ID++;
-}
+
+	public Property(String ownerName, String ownerID, String city, String region, String district, String street,
+			double area) {
+		propertyID = ID++;
+		this.ownerName = ownerName;
+		this.ownerID = ownerID;
+		this.city = city;
+		this.region = region;
+		this.district = district;
+		this.street = street;
+		this.area = area;
+		rented = false;
+		pricOf1meter = 0;
+		dailyRent = 0;
+	}
+
+	public Property() {
+	}
+
 	public abstract double calculateDailyRent();
-	
-	public boolean rented () {
-		return rented ;
-//=======
-//>>>>>>> branch 'main' of https://github.com/renad12345/CS-Project
-	}
-	
+
 	@Override
-	public String toString() { //#
-		return "Property [propertyNum=" + propertyID + ", City=" + city + ", Region=" + region + ", District="
-				+ district + ", Street=" + street + ", Area=" + area + ", rented=" + rented 
-				+ ", PricOf1meter=" + pricOf1meter;
+	public String toString() {
+		String isRented = rented ? "Status: Rented" : "status: Not rented";
+
+		return "propertyID: " + propertyID + "\nCity: " + city + "\nRegion: " + region + "\nDistrict: " + district
+				+ "\nStreet: " + street + "\nArea in meters: " + area + "\nPrice Of one meter: " + pricOf1meter
+				+ "\nDaily Rent (SR): " + dailyRent + "\n" + isRented + "\n";
 	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public int getPropertyID() {
+		return propertyID;
+	}
+
+	public boolean isRented() {
+		return rented;
+	}
+
+	public void setRented(boolean rented) {
+		this.rented = rented;
+	}
+
+	public String getOwnerID() {
+		return ownerID;
+	}
+
 }

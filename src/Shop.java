@@ -1,33 +1,36 @@
+public class Shop extends Property {
 
-public class Shop extends Property{
+	public Shop(String ownerName, String ownerID, String city, String region, String district, String street,
+			double area) {
 
-	public Shop(String tanentName, int propertyID, String city, String region, String district, String street,
-			double area, boolean rented) {
-		super(tanentName,propertyID , city, region, district, street, area );
+		super(ownerName, ownerID, city, region, district, street, area);
 		pricOf1meter = 800;
+		dailyRent = calculateDailyRent();
+		System.out.println("Shop was added succsefully with property ID: " + propertyID);
+
 	}
-	//copyConstructor
-	
-//<<<<<<< HEAD
+
+	// copyConstructor
 	public Shop(Shop s) {
-		super(s.tanentName,s.propertyID , s.city, s.region, s.district, s.street, s.area );
+		propertyID = s.propertyID;
+		ownerName = s.ownerName;
+		ownerID = s.ownerID;
+		city = s.city;
+		region = s.region;
+		district = s.district;
+		street = s.street;
+		area = s.area;
 		pricOf1meter = 800;
+		dailyRent = s.dailyRent;
 	}
-
-//=======
 
 	public double calculateDailyRent() {
-		return (pricOf1meter * area );
-		
-		
-//>>>>>>> branch 'main' of https://github.com/renad12345/CS-Project
+		return (pricOf1meter * area);
 	}
 
-	//toString
-	
-	public double getPricOf1meter() {
-		return pricOf1meter;
+	@Override
+	public String toString() {
+		return "Property kind: Shop\n" + super.toString();
 	}
-	
 
 }
