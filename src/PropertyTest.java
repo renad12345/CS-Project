@@ -35,10 +35,10 @@ public class PropertyTest {
 			System.out.println("\n");
 			System.out.println("How can I help you? Enter one of the following options");
 			System.out.println("1- Rent a property");
-			System.out.println("2- Remove a lease");
+			System.out.println("2- Cancel a lease");
 			System.out.println("3- Search for a lease");
 			System.out.println("4- add a property for rent");
-			System.out.println("5- Remove your own property");
+			System.out.println("5- Cancel your own property");
 			System.out.println("6- Search for your own property");
 			System.out.println("7- Show my information");
 			System.out.println("8- Exit");
@@ -65,13 +65,15 @@ public class PropertyTest {
 					System.out.print("property ID: ");
 					int propertyID1 = input.nextInt();
 
-					System.out.print("Enter suitable duration in days for the lease: ");
-					int duration = input.nextInt();
+					
 
 					if (wantedProperty(propertyID1) != null && wantedProperty(propertyID1).getOwnerID() != null
-							&& !(wantedProperty(propertyID1).getOwnerID().equals(users[1].getID()))) { // tanent can't
-																										// be owner for
-																										// same property
+							&& !(wantedProperty(propertyID1).getOwnerID().equals(users[1].getID()))) { //user can't be owner and tanent
+						                                                                               //for same property
+						                                                                               
+						System.out.print("Enter suitable duration in days for the lease: ");
+						int duration = input.nextInt();													
+																										
 						Lease lease1 = new Lease(users[1].getName(), users[1].getID(), duration,
 								wantedProperty(propertyID1));
 						users[1].addLease(lease1);
@@ -82,8 +84,8 @@ public class PropertyTest {
 
 			case 2:
 				System.out.println("\n");
-				System.out.println("******************* 2- Remove a lease *******************");
-				System.out.println("Enter property's lease number which you want to cancel");
+				System.out.println("******************* 2- Cancel a lease *******************");
+				System.out.println("Enter property's lease ID which you want to cancel");
 				int LeaseNo = input.nextInt();
 				if (users[1].removeLease(LeaseNo)) {
 					System.out.println("Lease was deleted succsfully!");
@@ -96,8 +98,9 @@ public class PropertyTest {
 				System.out.println("******************* 3- Search for a lease *******************");
 				System.out.println("Enter property's lease ID which you want to search about");
 				int LeaseID = input.nextInt();
-				if (users[1].searchLease(LeaseID) != null)
+				if (users[1].searchLease(LeaseID) != null) {
 					System.out.println("Lease was found!");
+					System.out.println(users[1].searchLease(LeaseID));}
 				else
 					System.out.println("Sorry, Lease is not found!");
 				break;
@@ -123,14 +126,14 @@ public class PropertyTest {
 				Double Area = input.nextDouble();
 
 				System.out.println("Do you want to add a shop or an apartment for rent?");
-				System.out.println("Enter 'S' for a shop and 'A' for an apartment");
-				char propertyKind = input.next().charAt(0);
+				System.out.println("Enter 1 for a shop and 2 for an apartment");
+				int propertyKind = input.nextInt();
 
-				if (propertyKind == 'S') {
+				if (propertyKind == 1) {
 					Property property1 = new Shop(users[1].getName(), users[1].getID(), city, Region, District, Street,
 							Area);
 					users[1].addProperty(property1);
-				} else if (propertyKind == 'A') {
+				} else if (propertyKind == 2) {
 					System.out.print("Enter number of rooms: ");
 					int numOfRooms = input.nextInt();
 					Property property1 = new Apartment(users[1].getName(), users[1].getID(), city, Region, District,
@@ -144,8 +147,8 @@ public class PropertyTest {
 
 			case 5:
 				System.out.println("\n");
-				System.out.println("******************* 5- Remove a property *******************");
-				System.out.println("Enter property id");
+				System.out.println("******************* 5- Cancel a property *******************");
+				System.out.println("Enter property ID");
 				int propertyID2 = input.nextInt();
 				if (users[1].removeProperty(propertyID2))
 					System.out.println("property was deleted succsfully!");
@@ -156,10 +159,11 @@ public class PropertyTest {
 			case 6:
 				System.out.println("\n");
 				System.out.println("******************* 6- Search for a property *******************");
-				System.out.println("Enter property's id number which you want to search about");
+				System.out.println("Enter property's ID which you want to search about");
 				int propertyID3 = input.nextInt();
-				if (users[1].findProperty(propertyID3) != null)
+				if (users[1].findProperty(propertyID3) != null) {
 					System.out.println("property was found!");
+					System.out.println(users[1].findProperty(propertyID3));}
 				else
 					System.out.println("Sorry, property was not found!");
 				break;
