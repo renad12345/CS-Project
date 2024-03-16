@@ -5,7 +5,8 @@ public class Shop extends Property {
 
 		super(ownerName, ownerID, city, region, district, street, area);
 		pricOf1meter = 800;
-		dailyRent = calculateDailyRent();
+		dailyRent = calculateDailyRent();//call calculateDailyRent method to set dailyRent
+
 		System.out.println("Shop was added succsefully with property ID: " + propertyID);
 
 	}
@@ -25,7 +26,8 @@ public class Shop extends Property {
 	}
 
 	public double calculateDailyRent() {
-		return (pricOf1meter * area);
+		return (pricOf1meter * area);// Daily rent will be calculated
+
 	}
 
 	@Override
