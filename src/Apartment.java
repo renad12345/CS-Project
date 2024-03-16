@@ -39,5 +39,5 @@ public class Apartment extends Property {
 		return "Property kind: Apartment\n" + super.toString() + "Number Of Rooms: " + NumOfRooms + "\n";
 	}
 
-}
+}//end class
 
