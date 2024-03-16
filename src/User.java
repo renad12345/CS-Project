@@ -92,7 +92,7 @@ public class User {
 
 		return null;
 	}
-// to check if the properties are not rented 
+// to check if the properties are not rented .
 	public void availableProperties() {
 
 		for (int i = 0; i < numOfProperty; i++)

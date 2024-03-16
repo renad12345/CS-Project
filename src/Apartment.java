@@ -12,7 +12,7 @@ public class Apartment extends Property {
 
 	}
 
-//copyConstructor
+//copyConstructor 
 	public Apartment(Apartment Ap) {
 		propertyID = Ap.propertyID;
 		ownerName = Ap.ownerName;
