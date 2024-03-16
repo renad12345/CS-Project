@@ -32,7 +32,7 @@ public abstract class Property {
 	public Property() {
 	}
 
-	public abstract double calculateDailyRent();
+	public abstract double calculateDailyRent(); // abstract method
 
 	@Override
 	public String toString() {
@@ -52,7 +52,7 @@ public abstract class Property {
 	}
 
 	public boolean isRented() {
-		return rented;
+		return rented;// that will return if the property is rented or not
 	}
 
 	public void setRented(boolean rented) {
