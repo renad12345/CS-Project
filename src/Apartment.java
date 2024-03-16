@@ -1,4 +1,3 @@
-
 public class Apartment extends Property {
 	private int NumOfRooms;
 
@@ -41,3 +40,4 @@ public class Apartment extends Property {
 	}
 
 }
+

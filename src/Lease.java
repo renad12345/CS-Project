@@ -1,4 +1,3 @@
-
 public class Lease {
 	private static int ID = 1;
 	private int leaseID;
@@ -56,3 +55,4 @@ public class Lease {
 		return property;
 	}
 }// End class
+

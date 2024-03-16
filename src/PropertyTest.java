@@ -194,4 +194,4 @@ public class PropertyTest {
 		return null;
 	}// End method
 
-}// End main
+}// End class
