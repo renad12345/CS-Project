@@ -27,6 +27,7 @@ public class User {
 		return false;
 
 	}
+	
 
 	public Lease searchLease(int LeaseID) {
 		for (int i = 0; i < numOfLease; i++)
@@ -91,7 +92,7 @@ public class User {
 
 		return null;
 	}
-
+// to check if the properties are not rented 
 	public void availableProperties() {
 
 		for (int i = 0; i < numOfProperty; i++)
@@ -100,7 +101,7 @@ public class User {
 				System.out.println("\n");
 			}
 	}
-
+// To calculate the number of non-rented properties.
 	public int availablePropertiesNum() {
 		int availablePropertyNum = 0;
 		for (int i = 0; i < numOfProperty; i++)
@@ -137,4 +138,4 @@ public class User {
 		return numOfProperty;
 	}
 
-}
+}// end class
