@@ -1,4 +1,6 @@
-public class Lease {
+import java.io.Serializable;
+
+public class Lease implements Serializable {
 	private static int ID = 1;
 	private int leaseID;
 	private String tanantName;
@@ -53,6 +55,13 @@ public class Lease {
 
 	public Property getProperty() {
 		return property;
+	}
+	
+	public static void setID(int iD) {
+		ID = iD;
+	}
+	public static int getID() {
+		return ID;
 	}
 }// End class
 

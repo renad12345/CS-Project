@@ -1,4 +1,6 @@
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
 	private String ID;
 	private String name;
 	private String phone;
@@ -120,7 +122,7 @@ public class User {
 
 		String propertiesInfo = "\nProperties Information: \n";
 		for (int i = 0; i < numOfProperty; i++)
-			propertiesInfo += properties[i].toString() + "\n";
+			propertiesInfo += properties[i].toString()  /*polymorphism*/ + "\n";
 
 		return "User ID: " + ID + "\nName: " + name + "\nPhone: " + phone + "\nNumber Of leases: " + numOfLease
 				+ leasesInfo + "\nNumber of properties: " + numOfProperty + propertiesInfo;

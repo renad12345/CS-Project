@@ -1,4 +1,6 @@
-public class Shop extends Property {
+import java.io.Serializable;
+
+public class Shop extends Property{
 
 	public Shop(String ownerName, String ownerID, String city, String region, String district, String street,
 			double area) {

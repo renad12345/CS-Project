@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 public class Apartment extends Property {
 	private int NumOfRooms;
 
