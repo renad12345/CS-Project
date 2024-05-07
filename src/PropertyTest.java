@@ -10,7 +10,6 @@ public class PropertyTest {
 		
 		File usersFile = new File("users.ser");
 		
-		
 		if(usersFile.exists()) {
 			FileInputStream usersFileInStream = new FileInputStream(usersFile);
 			ObjectInputStream usersObjectStream = new ObjectInputStream(usersFileInStream);
