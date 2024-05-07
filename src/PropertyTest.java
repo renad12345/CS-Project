@@ -6,17 +6,27 @@ public class PropertyTest {
 	public static User[] users;
 	public static int numOfusers;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException  {
 		
 		File usersFile = new File("users.ser");
 		
-		
+		FileInputStream usersFileInStream = null ;
+
+		String id= "";
+		boolean valid1 = true;
+		boolean valid2 = true;
+		while(valid1) {
+			try {
 		
 		if(usersFile.exists()) {
-			FileInputStream usersFileInStream = new FileInputStream(usersFile);
+			try {
+			 usersFileInStream = new FileInputStream(usersFile);
+			}
+			catch (FileNotFoundException e) {
+				System.out.println(e);
+			}
 			ObjectInputStream usersObjectStream = new ObjectInputStream(usersFileInStream);
 			int usersSize = usersObjectStream.readInt();
-			
 			int lastPropertyID = usersObjectStream.readInt();
 			int lastLeaseID = usersObjectStream.readInt();
 			
@@ -24,7 +34,6 @@ public class PropertyTest {
 			Lease.setID(lastLeaseID);
 			
 			users = new User[usersSize + 2];
-
 			try {
 				while (true) {
 					users[numOfusers]=(User)usersObjectStream.readObject();
@@ -61,14 +70,21 @@ public class PropertyTest {
 		User currentUser = null;
 		System.out.println("Are you a new user?");
 		char newUser = input.next().charAt(0);
-		
+		boolean valid = true;
 		if (newUser=='n' && numOfusers!=0) {
 
 			boolean idFound = false;
+			id = input.next();
 			while (idFound == false) {
+				while(valid)
+				try {
 				System.out.print("Enter your ID number: ");
-
-				String id = input.next();
+				if(id.length() !=8)
+					throw new IdOrPhoneNumberException("ID");
+					valid = false;
+				}catch (IdOrPhoneNumberException e) {
+					System.out.println(e);
+				}
 				for (int i = 0; i < users.length; i++) {
 					if(users[i]!=null && users[i].getID().equals(id)) {
 						currentUser = users[i];
@@ -82,23 +98,37 @@ public class PropertyTest {
 			}
 		}
 		else {
+			
 		System.out.println("you have to register as a new user, Please, tell us more about you!");
 //Read info from user
+		
 		System.out.print("Full name: ");
 		input.nextLine();
 		String name = input.nextLine();
 
+		try {
 		System.out.print("ID number: ");
 		String ID = input.next();
+		if(ID.length() !=8)
+			throw new IdOrPhoneNumberException("ID");
+			
 
 		System.out.print("Phone Number: ");
 		String phoneNumber = input.next();
-		
+		if(phoneNumber.length() !=10 || !phoneNumber.substring(0, 2).equals("05"))
+			throw new IdOrPhoneNumberException("Phone Number");
+
 		currentUser = new User(ID, name, phoneNumber);
-
-		users[numOfusers++] = currentUser; }
+		users[numOfusers++] = currentUser;
 		
-
+		valid2 = false;
+		}
+		catch (IdOrPhoneNumberException e) {
+			System.out.println(e);
+		}
+		}
+		
+		
 		int totalNumProperty;
 		int choice;
 		do {
@@ -238,6 +268,7 @@ public class PropertyTest {
 					System.out.println("Sorry, property was not found!");
 				break;
 
+			
 			case 7:
 				System.out.println("\n");
 				System.out.println("******************* 7- Show my information *******************");
@@ -255,7 +286,12 @@ public class PropertyTest {
 
 		} // End while
 		while (choice != 8);
-		
+			}catch (InputMismatchException e) {
+				String string = input.next();
+				System.out.println(e);
+				System.out.println("Enter again:");
+			}
+			}//large while 
 		File usersFileOut = new File("users.ser");
 		FileOutputStream usersFileOutStream = new FileOutputStream(usersFileOut);
 		ObjectOutputStream outUsersObjectStream = new ObjectOutputStream(usersFileOutStream);
