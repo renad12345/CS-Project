@@ -194,16 +194,22 @@ public class PropertyTest {
 				break;
 
 			case 3:
-				System.out.println("\n");
-				System.out.println("******************* 3- Search for a lease *******************");
-				System.out.println("Enter property's lease ID which you want to search about");
-				int LeaseID = input.nextInt();
+			//	System.out.println("\n");
+				//System.out.println("******************* 3- Search for a lease *******************");
+				//System.out.println("Enter property's lease ID which you want to search about");
+				GUI g =new GUI();
+				while (!g.IDState());
+				
+				int LeaseID = g.getID();
+				System.out.println(LeaseID);
 				if (currentUser.searchLease(LeaseID) != null) {
-					System.out.println("Lease was found!");
-					System.out.println(currentUser.searchLease(LeaseID));}
+					g.textArea.append("Lease was found!");
+					g.textArea.append(currentUser.searchLease(LeaseID).toString());}
+				
 				else
-					System.out.println("Sorry, Lease is not found!");
+					g.textArea.append("Sorry, Lease is not found!");
 				break;
+				//g.textArea.append();
 
 			case 4:
 				System.out.println("\n");
@@ -232,7 +238,7 @@ public class PropertyTest {
 				if (propertyKind == 1) {
 					Property property1 = new Shop(currentUser.getName(), currentUser.getID(), city, Region, District, Street,
 							Area);
-					currentUser.addProperty(property1);
+					currentUser.addProperty(property1); 
 				} else if (propertyKind == 2) {
 					System.out.print("Enter number of rooms: ");
 					int numOfRooms = input.nextInt();
@@ -312,5 +318,13 @@ public class PropertyTest {
 				return users[i].findProperty(propertyId);
 		return null;
 	}// End method
+	
+	
+	
+	
+	
+
+	
+		
 
 }// End class

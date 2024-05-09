@@ -2,7 +2,7 @@ import java.io.Serializable;
 
 public class Lease implements Serializable {
 	private static int ID = 1;
-	private int leaseID;
+	private static int leaseID;
 	private String tanantName;
 	private String tanentID;
 	private Property property;
@@ -44,12 +44,12 @@ public class Lease implements Serializable {
 	}
 
 	@Override
-	public String toString() {// n
+	public  String toString() {// n
 		return ("\nLease ID: " + leaseID + "\nTenant name: " + tanantName + "\nTanent ID: " + tanentID
 				+ "\nDuration in days: " + duration + "\nTotal rent: " + totalRent);
 	}
 
-	public int getLeaseID() {
+	public static int getLeaseID() {
 		return leaseID;
 	}
 
@@ -63,5 +63,30 @@ public class Lease implements Serializable {
 	public static int getID() {
 		return ID;
 	}
+
+	public String getTanantName() {
+		return tanantName;
+	}
+
+	public void setTanantName(String tanantName) {
+		this.tanantName = tanantName;
+	}
+
+	public String getTanentID() {
+		return tanentID;
+	}
+
+	
+
+	public int getDuration() {
+		return duration;
+	}
+
+	
+	public double getTotalRent() {
+		return totalRent;
+	}
+
+	
 }// End class
 
