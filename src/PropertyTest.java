@@ -183,6 +183,8 @@ public class PropertyTest {
 				break;
 
 			case 2:
+				DeleteLeaseGUI gui= new DeleteLeaseGUI();
+				gui.setVisible(true);
 				System.out.println("\n");
 				System.out.println("******************* 2- Cancel a lease *******************");
 				System.out.println("Enter property's lease ID which you want to cancel");
@@ -194,22 +196,23 @@ public class PropertyTest {
 				break;
 
 			case 3:
-			//	System.out.println("\n");
-				//System.out.println("******************* 3- Search for a lease *******************");
-				//System.out.println("Enter property's lease ID which you want to search about");
-				GUI g =new GUI();
-				while (!g.IDState());
+				SearchLeaseGUI g= new SearchLeaseGUI();
+				g.setVisible(true);
+				System.out.println("\n");
+				System.out.println("******************* 3- Search for a lease *******************");
+				System.out.println("Enter property's lease ID which you want to search about");
 				
-				int LeaseID = g.getID();
-				System.out.println(LeaseID);
+				
+				int LeaseID =input.nextInt();
+		
 				if (currentUser.searchLease(LeaseID) != null) {
-					g.textArea.append("Lease was found!");
-					g.textArea.append(currentUser.searchLease(LeaseID).toString());}
+					System.out.println("Lease was found!");
+					System.out.println(currentUser.searchLease(LeaseID));}
 				
 				else
-					g.textArea.append("Sorry, Lease is not found!");
+					System.out.println("Sorry, Lease is not found!");
 				break;
-				//g.textArea.append();
+				
 
 			case 4:
 				System.out.println("\n");
