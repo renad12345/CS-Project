@@ -301,6 +301,17 @@ public class PropertyTest {
 				System.out.println("Enter again:");
 			}
 			}//large while 
+		save();
+	}// End main
+
+	public static Property wantedProperty(int propertyId) {
+		for (int i = 0; i < numOfusers; i++)
+			if (users[i].findProperty(propertyId) != null && users[i].findProperty(propertyId).isRented() == false)
+				return users[i].findProperty(propertyId);
+		return null;
+	}// End method
+	
+	public static void save() throws IOException {
 		File usersFileOut = new File("users.ser");
 		FileOutputStream usersFileOutStream = new FileOutputStream(usersFileOut);
 		ObjectOutputStream outUsersObjectStream = new ObjectOutputStream(usersFileOutStream);
@@ -313,18 +324,12 @@ public class PropertyTest {
 		for(int i = 0; i<numOfusers; i++)
 			outUsersObjectStream.writeObject(users[i]);
 		outUsersObjectStream.close();
-	}// End main
-
-	public static Property wantedProperty(int propertyId) {
-		for (int i = 0; i < numOfusers; i++)
-			if (users[i].findProperty(propertyId) != null && users[i].findProperty(propertyId).isRented() == false)
-				return users[i].findProperty(propertyId);
-		return null;
-	}// End method
+	}
 	
 	
-	
-	
+	public static void load() {
+		
+	}
 	
 
 	

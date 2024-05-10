@@ -74,8 +74,7 @@ public class SearchLeaseGUI extends JFrame implements ActionListener {
     	        textArea.append("Lease with ID " + leaseID + " was not found.\n");
     	    }
     }
-
-    public static void main(String[] args) {
-        new SearchLeaseGUI();
-    }
+public static void main(String[] args) {
+	new SearchLeaseGUI();
+}
 }
