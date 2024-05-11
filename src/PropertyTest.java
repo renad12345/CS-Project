@@ -7,59 +7,14 @@ public class PropertyTest {
 	public static int numOfusers;
 
 	public static void main(String[] args) throws IOException  {
-		
-		File usersFile = new File("users.ser");
-		
-		FileInputStream usersFileInStream = null ;
-
-		String id= "";
-		boolean valid1 = true;
-		boolean valid2 = true;
-		while(valid1) {
-			try {
-		
-		if(usersFile.exists()) {
-			try {
-			 usersFileInStream = new FileInputStream(usersFile);
-			}
-			catch (FileNotFoundException e) {
-				System.out.println(e);
-			}
-			ObjectInputStream usersObjectStream = new ObjectInputStream(usersFileInStream);
-			int usersSize = usersObjectStream.readInt();
-			int lastPropertyID = usersObjectStream.readInt();
-			int lastLeaseID = usersObjectStream.readInt();
-			
-			Property.setID(lastPropertyID);
-			Lease.setID(lastLeaseID);
-			
-			users = new User[usersSize + 2];
-			try {
-				while (true) {
-					users[numOfusers]=(User)usersObjectStream.readObject();
-					numOfusers++;
-				}
-			} catch (ClassNotFoundException e) {
-				// TODO: handle exception
-			}
-			catch (EOFException e) {
-				// TODO: handle exception
-			}
-			usersObjectStream.close();
-
-		}
-		else {
-			users = new User[1];
-		}
-
-			
-	
+	load();
 			
 		
 
-		
-	
-		
+	boolean valid2 = true;
+	String id= "";
+
+		try {
 		//Property property = new Apartment(users[0].getName(), users[0].getID(), "Riyadh", "Riyadh", "Alhamra",
 				//"Almasane", 200, 5);
 		//currentUser.addProperty(property);
@@ -91,14 +46,14 @@ public class PropertyTest {
 						idFound = true;
 						break;
 						}}
-						
-			
-			
 				
 			}
 		}
+		
+		
+		
+		
 		else {
-			
 		System.out.println("you have to register as a new user, Please, tell us more about you!");
 //Read info from user
 		
@@ -128,6 +83,9 @@ public class PropertyTest {
 		}
 		}//while"valid2"
 		}
+		
+		
+		
 		
 		
 		int totalNumProperty;
@@ -297,14 +255,16 @@ public class PropertyTest {
 		} // End while
 		while (choice != 8);
 			}catch (InputMismatchException e) {
-				String string = input.next();
+				//String string = input.next();
 				System.out.println(e);
 				System.out.println("Enter again:");
 			}
-			}//large while 
 		save();
-	}// End main
 
+			}// End main
+
+	
+	
 	public static Property wantedProperty(int propertyId) {
 		for (int i = 0; i < numOfusers; i++)
 			if (users[i].findProperty(propertyId) != null && users[i].findProperty(propertyId).isRented() == false)
@@ -329,9 +289,47 @@ public class PropertyTest {
 	
 	
 	
-	
-
-	
+	public static void load() throws IOException {
+File usersFile = new File("users.ser");
 		
+		FileInputStream usersFileInStream = null ;
 
-}// End class
+			
+		
+		if(usersFile.exists()) {
+			try {
+			 usersFileInStream = new FileInputStream(usersFile);
+			}
+			catch (FileNotFoundException e) {
+				System.out.println(e);
+			}
+			ObjectInputStream usersObjectStream = new ObjectInputStream(usersFileInStream);
+			int usersSize = usersObjectStream.readInt();
+			int lastPropertyID = usersObjectStream.readInt();
+			int lastLeaseID = usersObjectStream.readInt();
+			
+			Property.setID(lastPropertyID);
+			Lease.setID(lastLeaseID);
+			
+			users = new User[usersSize + 2];
+			try {
+				while (true) {
+					users[numOfusers]=(User)usersObjectStream.readObject();
+					numOfusers++;
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO: handle exception
+			}
+			catch (EOFException e) {
+				// TODO: handle exception
+			}
+			usersObjectStream.close();
+
+		}
+		else {
+			users = new User[1];
+		}
+
+	}
+	
+	}// End class

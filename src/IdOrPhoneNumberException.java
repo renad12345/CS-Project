@@ -5,6 +5,6 @@ public class IdOrPhoneNumberException extends Exception{
 	}
 
 	IdOrPhoneNumberException(String s){
-		System.out.println(s + " is incorrict!");
+		System.out.println(s + " is incorrict! \n");
 	}
 }

@@ -31,7 +31,9 @@ public static void main(String[] args) throws IOException{
 	//Container contentPane = new Container();
 	JFrame frame = new JFrame("Tab");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setSize(300,200);
+	frame.setSize(400,300);
+	frame.setLocationRelativeTo(null);
+	//frame.setLayout();
 	
 	JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 	//tab.setBounds(10,32,511,361);
@@ -102,7 +104,7 @@ public static void main(String[] args) throws IOException{
     //------------------ Tab2 ------------------
     JPanel panel2 = new JPanel();
 
-    	label = new JLabel("Enter LeaseID that you want to deleted " ) ;
+    	label = new JLabel("Enter LeaseID to deleted " ) ;
     	 label.setBounds(10 , 100, 230, 30  ) ;
     	 panel2.add(label);
     	 
@@ -111,7 +113,7 @@ public static void main(String[] args) throws IOException{
     	// setResizable (false);
     	// setTitle (" delete Lease ");
     	// setLocation (200, 300);
-    	 panel2.setLayout(null);
+    	// panel2.setLayout(null);
         
     	 JTextField leaseIDField2 = new JTextField();
     	 leaseIDField2.setColumns(10);
