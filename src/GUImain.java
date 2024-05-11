@@ -156,6 +156,77 @@ public static void main(String[] args) throws IOException{
         
       //  add(deleteButton);
         tabbedPane.addTab("Tab 2", panel2);
+        
+        
+        
+        
+        
+        
+        
+        
+    	JPanel panel3 = new JPanel();
+    	
+    	JLabel label3 = new JLabel("Enter propertyID " ) ;
+      	 label3.setBounds(10 , 100, 230, 30  ) ;
+      	 panel3.add(label3);
+      	 
+      	 
+      	//setSize (700, 600);
+    	// setResizable (false);
+    	// setTitle (" search Lease ");
+    	// setLocation (200, 300);
+    	// panel1..setLayout(null);
+
+    	 JTextField propertyIdField = new JTextField();
+    	 propertyIdField.setColumns(10);
+    	 propertyIdField.setBounds(250 , 100 , 190, 30 ) ;
+    	 panel3.add(propertyIdField);
+    	 
+         JTextArea textArea3 = new JTextArea();
+         textArea3.setColumns(15);
+         textArea3.setRows(8);
+         textArea3.setBorder(BorderFactory.createLineBorder(Color.blue));
+         textArea3.setEditable(false);
+         textArea3.setBounds(110 , 200 , 400 , 200 ) ;
+         // textArea.setBounds(250 , 150 , 190 , 30 ) ;
+          panel3.add(textArea3);
+
+          
+         
+         
+    	 JButton  searchButton3 = new JButton("Search");
+           searchButton3.setBounds(450, 100 , 150 , 30 ) ;
+
+           searchButton3.addActionListener(new ActionListener() {
+    		
+    		@Override
+    		public void actionPerformed(ActionEvent e) {
+    			 if (e.getSource() == searchButton3) {
+    	    	        int propertyID = Integer.parseInt(propertyIdField.getText());
+    	    	        textArea3.setText(""); // Clear previous search results
+    	    	        
+    	    	        // Loop through users array to find the user who owns the lease
+    	    	        for (int i = 0; i < PropertyTest.numOfusers; i++) {
+    	    	            Property foundLease = PropertyTest.users[i].findProperty(propertyID);
+    	    	            if (foundLease != null) {
+    	    	                // Display lease details in the text area
+    	    	                textArea.append("Lease found:\n");
+    	    	                textArea.append(foundLease.toString() + "\n");
+    	    	                return; // Exit the loop if the lease is found
+    	    	            }
+    	    	        }
+    	    	       
+    	    	        textArea.append("Lease with ID " + propertyID + " was not found.\n");
+    	    	    }			
+    		}
+    	});
+       
+        
+           panel3.add(searchButton3) ;
+
+           // add(searchButton);
+         tabbedPane.addTab("Tab 3", panel3);
+        
         frame.add(tabbedPane);
         frame.setVisible(true);
        
