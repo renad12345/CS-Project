@@ -327,9 +327,7 @@ public class PropertyTest {
 	}
 	
 	
-	public static void load() {
-		
-	}
+	
 	
 
 	
