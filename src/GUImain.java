@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.InputMismatchException;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -29,13 +30,25 @@ public class GUImain {
 	public static void main(String[] args) throws IOException {
 
 		load(); //load users information from file
-	
+		
 		users[0] = new User("12341234", "Sara Ahmed", "0509876543");
 		 Property property = new Apartment(users[0].getName(), users[0].getID(),
 		 "Riyadh", "Riyadh", "Alhamra",
 		 "Almasane", 200, 5);
 		 users[0].addProperty(property);
-		 users[1] = new User("12345678", "User", "0534567890");
+			
+			try {
+				
+				 users[1] = new User("12345678", "User", "0534567890");
+				 
+				if ((users[1].getID()).length() != 8)
+					throw new IdOrPhoneNumberException("ID");
+
+			} catch (IdOrPhoneNumberException e) {
+				System.out.println(e);
+			}
+	
+		
 		
 		
 		JFrame frame = new JFrame("Property Renting");
@@ -152,11 +165,13 @@ public class GUImain {
 		
 		
 		
-		
+		// -----------------Tab4-----------------
 		
 		
 		JPanel panel4 = new JPanel();
 	     
+	
+
 		JLabel  CityLabel = new JLabel("City:");
 	       CityLabel.setBounds(30 , 50 , 150 , 30 ); 
 	       panel4.add(CityLabel);
@@ -201,6 +216,7 @@ public class GUImain {
 	        AreaField.setBounds(160 , 250 , 150 , 30 ) ;
 	        AreaField.setColumns(10);
 	         panel4.add( AreaField);
+	
 	         
 
 	         JLabel gLabel = new JLabel("Type:");
@@ -266,8 +282,8 @@ public class GUImain {
 								 property2 = new Shop(users[1].getName(),users[1].getName(), CityField.getText(), RegionField.getText(), DistreictField.getText(), StreetField.getText(), Integer.parseInt(AreaField.getText()));
 
 				
-					users[1].addProperty(property);
-					 JOptionPane.showMessageDialog(null,"property with ID" + property2.getID() + " was created");				}
+					users[1].addProperty(property2);
+					 JOptionPane.showMessageDialog(null,"property with ID" + property2.getPropertyID() + " was created");				}
 				});
 	        
 	        
