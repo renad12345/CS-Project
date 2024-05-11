@@ -105,7 +105,7 @@ public class PropertyTest {
 		System.out.print("Full name: ");
 		input.nextLine();
 		String name = input.nextLine();
-
+		while(valid2) {
 		try {
 		System.out.print("ID number: ");
 		String ID = input.next();
@@ -126,6 +126,7 @@ public class PropertyTest {
 		catch (IdOrPhoneNumberException e) {
 			System.out.println(e);
 		}
+		}//while"valid2"
 		}
 		
 		
