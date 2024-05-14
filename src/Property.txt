@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public abstract class Property {
+public abstract class Property implements Serializable{
 	protected static int ID = 1;
 	protected int propertyID;
 
@@ -62,6 +63,11 @@ public abstract class Property {
 	public String getOwnerID() {
 		return ownerID;
 	}
-
+public static void setID(int iD) {
+	ID = iD;
+}
+public static int getID() {
+	return ID;
+}
 }
 

@@ -7,64 +7,66 @@ public class PropertyTest {
 	public static int numOfusers;
 
 	public static void main(String[] args) throws IOException {
-		load(); //load users information from file
-
+		load(); // load users information from file
 		
+		
+		boolean valid = true;
 
+	
+			
+		
+		
 		try {
 			users[0] = new User("12341234", "Sara Ahmed", "0509876543");
-			 Property property = new Apartment(users[0].getName(), users[0].getID(),
-			 "Riyadh", "Riyadh", "Alhamra",
-			 "Almasane", 200, 5);
-			 users[0].addProperty(property);
-			 
-			 
-			 
-			 
+			Property property = new Apartment(users[0].getName(), users[0].getID(), "Riyadh", "Riyadh", "Alhamra",
+					"Almasane", 200, 5);
+			users[0].addProperty(property);
+
 			System.out.println("******************* Property Renting *******************");
 			System.out.println("Welcome Here!");
 			System.out.println("\n");
 
 //Read info from user
-	
-				boolean valid2 = true;
-				boolean valid3 = true;
-				String ID = "";
-				String phoneNumber ="";
-				
-				System.out.print("Full name: ");
-				input.nextLine();
-				String name = input.nextLine();
-				
-				while (valid2) { //check validity of ID
-					try {
-						System.out.print("ID number: ");
-						 ID = input.next();
-						if (ID.length() != 8)
-							throw new IdOrPhoneNumberException("ID");
-						valid2 = false;
 
-					} catch (IdOrPhoneNumberException e) {
-						System.out.println(e);
-					}}
-				
-					while (valid3) { ////check validity of phone number
-						try {
-							System.out.print("Phone Number: ");
-							phoneNumber = input.next();
-							if (phoneNumber.length() != 10 || !phoneNumber.substring(0, 2).equals("05"))
-								throw new IdOrPhoneNumberException("Phone Number");
-							valid3 = false;
-						} catch (IdOrPhoneNumberException e) {
-							System.out.println(e);
-						}
-					
-				} // while"valid3"
-					users[1] = new User(ID, name, phoneNumber);
+			boolean valid2 = true;
+			boolean valid3 = true;
+			String ID = "";
+			String phoneNumber = "";
 
+			System.out.print("Full name: ");
+			String name = input.nextLine();
+
+			while (valid2) { // check validity of ID
+				try {
+					System.out.print("ID number: ");
+					ID = input.next();
+					if (ID.length() != 8)
+						throw new IdOrPhoneNumberException("ID");
+					valid2 = false;
+
+				} catch (IdOrPhoneNumberException e) {
+					System.out.println(e);
+				}
+			}
+
+			while (valid3) { //// check validity of phone number
+				try {
+					System.out.print("Phone Number: ");
+					phoneNumber = input.next();
+					if (phoneNumber.length() != 10 || !phoneNumber.substring(0, 2).equals("05"))
+						throw new IdOrPhoneNumberException("Phone Number");
+					valid3 = false;
+				} catch (IdOrPhoneNumberException e) {
+					System.out.println(e);
+				}
+
+			} // while"valid3"
+			users[1] = new User(ID, name, phoneNumber);
 
 			int totalNumProperty;
 			int choice;
+			
+
 			do {
 				System.out.println("\n");
 				System.out.println("How can I help you? Enter one of the following options");
@@ -78,6 +80,8 @@ public class PropertyTest {
 				System.out.println("8- Exit");
 				choice = input.nextInt();
 
+				
+				
 				switch (choice) {
 				case 1:
 					System.out.println("\n");
@@ -101,14 +105,14 @@ public class PropertyTest {
 
 						if (wantedProperty(propertyID1) != null && wantedProperty(propertyID1).getOwnerID() != null
 								&& !(wantedProperty(propertyID1).getOwnerID().equals(users[1].getID()))) { // user
-																												// can't
-																												// be
-																												// owner
-																												// and
-																												// tanent
-																												// for
-																												// same
-																												// property
+																											// can't
+																											// be
+																											// owner
+																											// and
+																											// tanent
+																											// for
+																											// same
+																											// property
 
 							System.out.print("Enter suitable duration in days for the lease: ");
 							int duration = input.nextInt();
@@ -122,8 +126,7 @@ public class PropertyTest {
 					break;
 
 				case 2:
-					DeleteLeaseGUI gui = new DeleteLeaseGUI();
-					gui.setVisible(true);
+
 					System.out.println("\n");
 					System.out.println("******************* 2- Cancel a lease *******************");
 					System.out.println("Enter property's lease ID which you want to cancel");
@@ -135,8 +138,7 @@ public class PropertyTest {
 					break;
 
 				case 3:
-					SearchLeaseGUI g = new SearchLeaseGUI();
-					g.setVisible(true);
+
 					System.out.println("\n");
 					System.out.println("******************* 3- Search for a lease *******************");
 					System.out.println("Enter property's lease ID which you want to search about");
@@ -169,22 +171,36 @@ public class PropertyTest {
 					System.out.print("Street: ");
 					String Street = input.next();
 
-					System.out.print("Area in meters: ");
-					Double Area = input.nextDouble();
+					
+					double Area = 0;
+					while (valid) {
+						try {
+							System.out.print("Area in meters: ");
+							 Area = input.nextDouble();
+							valid = false;
+						} catch (InputMismatchException e) {
+							input.next();
+							System.out.println(e);
+							System.out.println("Enter area again");
+							// TODO: handle exception
+						}
+						
+					}
+				
 
 					System.out.println("Do you want to add a shop or an apartment for rent?");
 					System.out.println("Enter 1 for a shop and 2 for an apartment");
 					int propertyKind = input.nextInt();
 
 					if (propertyKind == 1) {
-						Property property1 = new Shop(users[1].getName(), users[1].getID(), city, Region,
-								District, Street, Area);
+						Property property1 = new Shop(users[1].getName(), users[1].getID(), city, Region, District,
+								Street, Area);
 						users[1].addProperty(property1);
 					} else if (propertyKind == 2) {
 						System.out.print("Enter number of rooms: ");
 						int numOfRooms = input.nextInt();
-						Property property1 = new Apartment(users[1].getName(), users[1].getID(), city, Region,
-								District, Street, Area, numOfRooms);
+						Property property1 = new Apartment(users[1].getName(), users[1].getID(), city, Region, District,
+								Street, Area, numOfRooms);
 						users[1].addProperty(property1);
 					}
 
@@ -232,13 +248,14 @@ public class PropertyTest {
 
 			} // End while
 			while (choice != 8);
+			
 		} catch (InputMismatchException e) {
 			// String string = input.next();
 			System.out.println(e);
 			System.out.println("Enter again:");
 		}
-		save(); //save users information to file
-
+		save(); // save users information to file
+		
 	}// End main
 
 	public static Property wantedProperty(int propertyId) {
@@ -281,21 +298,20 @@ public class PropertyTest {
 			Property.setID(lastPropertyID);
 			Lease.setID(lastLeaseID);
 
-			users = new User[usersSize + 1];
+			users = new User[usersSize + 2];
 			try {
 				while (true) {
 					users[numOfusers] = (User) usersObjectStream.readObject();
 					numOfusers++;
 				}
 			} catch (ClassNotFoundException e) {
-System.out.println(e);
-} catch (EOFException e) {
-	System.out.println(e);
+				System.out.println(e);
+			} catch (EOFException e) {
 			}
 			usersObjectStream.close();
 
 		} else {
-			users = new User[1];
+			users = new User[2];
 		}
 
 	}
